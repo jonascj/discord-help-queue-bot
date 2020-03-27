@@ -1,9 +1,37 @@
 # Discord Bot: Help Queue
 A simple (quick and dirty) bot which handles a simple (fifo) queue 
 for help / support / private discussion requests.
+It uses [discord.py](https://discordpy.readthedocs.io/en/latest/index.html)
+to interact with Discord services.
+
+![Screenshot the bot in use on a server](docs/showcase.png)
 
 One or more admin members can dequeue members from the queue 
 to offer help / support / private discussion in an orderly fashion.
+
+* Members can queue for help by typing `!needhelp`
+
+* Members can leave the queue by typing `!nvm`
+
+* Members can view the queue by typing `!show`
+
+* Admin members can dequeue members (to offer them help) by typing `!next`
+  (if both admin and queued member is connected to voice channels
+   the bot will move the member to the admin's voice channel)
+
+* Admin members can reset the queue by typing `!qe` (queue empty)
+
+The bot could be run on a machine which is always on 
+(a VPS or a Discord bot host service)
+and join multiple servers. 
+Seperate queues are maintained for each server the bot joins
+and users/admins on one server can only interact with the queue of their server.
+
+Personally, however, I use it to join a single server 
+and run the bot locally on personal computer
+since it is of little when I'm offline.
+
+
 
 # Quickstart
 1. Clone the repo.
@@ -22,8 +50,7 @@ DISCORD_TOKEN=<your-token-here>
 ```
 
 5. Add the user-ids of admin members and name of admin roles 
-to your `.env` file.
-
+to your `.env` file. 
 These users will have admin access to the queue
 (permission to empty it and dequeue members).
 
