@@ -5,6 +5,41 @@ for help / support / private discussion requests.
 One or more admin members can dequeue members from the queue 
 to offer help / support / private discussion in an orderly fashion.
 
+# Quickstart
+1. Clone the repo.
+
+2. Create a copy of `.env.template` for configuration:
+```
+cp .env.template .env
+```
+
+3. Create an application with a bot at
+<https://discordapp.com/developers/applications>,
+
+4. Add your bot's token to your `.env` file:
+```
+DISCORD_TOKEN=<your-token-here>
+```
+
+5. Add the user-ids of admin members and name of admin roles 
+to your `.env` file.
+
+These users will have admin access to the queue
+(permission to empty it and dequeue members).
+
+```
+ADMIN_USER_IDS=<id1>,<id2>
+ADMIN_ROLE_NAME=<role1>,<role2>
+```
+
+6. Generate an OAuth2 URL and use it to invite the bot to your server.
+The bot needs the following permissions:
+* `Send Messages`
+* `Move Members` (optional, needed automatically move
+
+7. Start the bot `python help_queue_bot.py`
+
+
 # Installation 
 
 ## Clone the repo
@@ -78,10 +113,12 @@ but noone would be able to dequeue them.
 ### By user-id
 1. Enable Developer Mode in the Discord App 
 to gain access to the `Copy ID`-feature.
+
 ![Screenshot of enabling developer mode](docs/discord-dev-mode.png)
 
 2. Right-click on any user's username or portrait/icon
 and select `Copy ID`
+
 ![Screenshot of enabling developer mode](docs/discord-copy-id.png)
 
 3. Add the ID to the `.env` file
@@ -104,5 +141,12 @@ Finally start the Python bot:
 python help_queue_bot.py
 ```
 
+You should now see your bot join your server.  
+Test it by sending a message `!help` or `!needhelp`.
+
+The bot is only connected to the server as long as
+this Python process is running.
+To have a permanent persence on your discord server
+the bot should be run on a machine which is always on.
 
 
