@@ -22,6 +22,12 @@ or
 ```
 pip install discord.py python-dotenv
 ```
+## Create an `.env` file for configuration
+Make a copy of `.env.template` called `.env`:
+```
+cp .env.template .env
+```
+This is the configuration for the bot
 
 ## Create a Discord application 
 Go to <https://discordapp.com/developers/applications>,
@@ -33,7 +39,10 @@ and follow the steps as indicated in the screenshot below:
 ![Screenshot of adding a bot to a Discord app](docs/discord-add-bot.png)
 
 ## Bot token
-Obtain a bot token and add it to your `.env` file.
+Copy the bot token and add it to your `.env` file:
+```
+DISCORD_TOKEN=<your-token-here>
+```
 ![Screenshot of obtaining bot token](docs/discord-bot-token.png)
 
 ## OAuth2 URL
@@ -60,14 +69,40 @@ the *Select a server* dropdown menu will be empty.
 
 ![Screenshot of adding bot to server](docs/discord-bot-add-to-server.png)
 
+## Configuring admins
+You could start your bot at this point (`python help_queue_bot.py`)
+but no admins would be configured.
+Members would be able to join the queue, 
+but noone would be able to dequeue them.
 
+### By user-id
+1. Enable Developer Mode in the Discord App 
+to gain access to the `Copy ID`-feature.
+![Screenshot of enabling developer mode](docs/discord-dev-mode.png)
 
+2. Right-click on any user's username or portrait/icon
+and select `Copy ID`
+![Screenshot of enabling developer mode](docs/discord-copy-id.png)
 
-# Starting the bot
+3. Add the ID to the `.env` file
+```
+ADMIN_USER_IDS=<id1>,<id2>
+``` 
 
+### By role names
+1. Add a role to your server called `queue-admin` or whatever you wish.
+2. Assign this role to all users on your server who should be able to
+administrate the queue.
+3. Add the role name to your `.env` file:
+```
+ADMIN_ROLE_NAME=<role1>,<role2>
+```
 
-
-
+## Start the bot
+Finally start the Python bot:
+```
+python help_queue_bot.py
+```
 
 
 
