@@ -4,7 +4,7 @@ for help / support / private discussion requests.
 It uses [discord.py](https://discordpy.readthedocs.io/en/latest/index.html)
 to interact with Discord services.
 
-![Screenshot the bot in use on a server](docs/showcase.png)
+![Screencapture of the bot in use on a server](docs/showcase.gif)
 
 One or more admin members can dequeue members from the queue 
 to offer help / support / private discussion in an orderly fashion.
